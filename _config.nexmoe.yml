@@ -1,6 +1,6 @@
-avatar: https://static.chiyukiruon.top/images/arimakana1.JPG # 网站 Logo
+avatar: /images/arimakana.JPG # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://static.chiyukiruon.top/images/background_kita1.PNG
+    path: /images/background_kita.PNG
 #    width: 1280
 #    height: 726
 favicon:
@@ -94,9 +94,6 @@ widgets:
       enable: true
       options: 
         widgetLink: #链接组件
-            - title: 千雪琉音
-              img: https://static.chiyukiruon.top/images/touxiang_01.GIF
-              link : https://chiyukiruon.com
             - title: 镜像站
               img: https://static.chiyukiruon.top/images/touxiang_01.GIF
               link : https://chiyukiruon.top
@@ -119,11 +116,12 @@ slotFooter: |
 
 # 自定义侧边栏尾部内容
 slotSidebar: |
-  <br><a target="_blank" href="https://beian.miit.gov.cn/">萌ICP备20225223号</a>
+  <br><a href="https://icp.gov.moe/?keyword=20230535" target="_blank">萌ICP备20230535号</a>
 
 # 评论框插槽
 slotComment: | 
 #  请在你的配置文件中设置 slotComment
+
 slotCopyright: | 
   <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
 
