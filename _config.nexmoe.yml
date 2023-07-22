@@ -25,10 +25,10 @@ customStyles:
 iconlib: # //at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css
 
 menu:
-    回到首页:
+    首页:
         - /
         - icon-home
-    文章归档:
+    归档:
         - /archive.html
         - icon-container
     好友:
@@ -101,26 +101,40 @@ widgets:
 copyTip: "著作权归作者所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
 
 slotHead: | 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-
-    gtag("config", "G-4D4ZJ9G024");
-  </script>
+#  <!-- Global site tag (gtag.js) - Google Analytics -->
+#  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+#  <script>
+#    window.dataLayer = window.dataLayer || [];
+#    function gtag(){dataLayer.push(arguments);}
+#    gtag("js", new Date());
+#
+#    gtag("config", "G-4D4ZJ9G024");m
+#  </script>
 
 slotFooter: | 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+#  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
 # 自定义侧边栏尾部内容
 slotSidebar: |
   <br><a href="https://icp.gov.moe/?keyword=20230535" target="_blank">萌ICP备20230535号</a>
 
 # 评论框插槽
-slotComment: | 
-#  请在你的配置文件中设置 slotComment
+slotComment: |
+  <div id="gitalk-container"></div>
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'e948606b6039be9b1bb8',
+      clientSecret: '9a1fffd36848027ad5ca522f9f152104c268672d',
+      repo: 'chiyukiruon.com.comments',
+      owner: 'ChiyukiRuon',
+      admin: [ 'ChiyukiRuon' ],
+      id: location.pathname, // 标识评论所属的页面 ID
+      distractionFreeMode: false // 关闭全屏模式
+    });
+    
+    gitalk.render('gitalk-container');
+  </script>
 
 slotCopyright: | 
   <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
