@@ -17,8 +17,8 @@
 <meta property="og:site_name" content="千雪琉音の桃花源">
 <meta property="og:description" content="这是本站的第一篇文章喵">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-22T06:11:35.690Z">
-<meta property="article:modified_time" content="2023-07-22T06:11:35.690Z">
+<meta property="article:published_time" content="2023-07-22T08:15:49.943Z">
+<meta property="article:modified_time" content="2023-07-22T08:15:49.943Z">
 <meta property="article:author" content="千雪琉音">
 <meta name="twitter:card" content="summary">
     
@@ -26,13 +26,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1690006306409">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1690013757116">
     
-    <link rel="stylesheet" href="/css/style.css?v=1690006306409">
+    <link rel="stylesheet" href="/css/style.css?v=1690013757116">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1690006306409">
+            <link rel="stylesheet" href="/custom.css?v=1690013757116">
         
     
 
@@ -41,20 +41,11 @@
 <script src="/lib/fancybox/fancybox.umd.js" async></script>
 
 
-    <script async src="/js/app.js?v=1690006306409"></script>
+    <script async src="/js/app.js?v=1690013757116"></script>
     
      
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-
-  gtag("config", "G-4D4ZJ9G024");
-</script>
-
+    
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -85,17 +76,17 @@
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
             <i class="mdui-list-item-icon nexmoefont icon-home"></i>
             <div class="mdui-list-item-content">
-                回到首页
+                首页
             </div>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive" title="文章归档">
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive" title="归档">
             <i class="mdui-list-item-icon nexmoefont icon-container"></i>
             <div class="mdui-list-item-content">
-                文章归档
+                归档
             </div>
         </a>
         
@@ -314,12 +305,27 @@
 </div>
   
   
-    <script async src="/js/copy-codeblock.js?v=1690006306392"></script>
+    <script async src="/js/copy-codeblock.js?v=1690013757102"></script>
   
 
   
       <div class="nexmoe-post-footer">
-          
+          <div id="gitalk-container"></div>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'e948606b6039be9b1bb8',
+    clientSecret: '9a1fffd36848027ad5ca522f9f152104c268672d',
+    repo: 'chiyukiruon.com.comments',
+    owner: 'ChiyukiRuon',
+    admin: [ 'ChiyukiRuon' ],
+    id: location.pathname, // 标识评论所属的页面 ID
+    distractionFreeMode: false // 关闭全屏模式
+  });
+  
+  gitalk.render('gitalk-container');
+</script>
+
       </div>
   
 </div>
@@ -358,8 +364,7 @@
 </div>
 
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
-
+    
 </body>
 
 </html>
