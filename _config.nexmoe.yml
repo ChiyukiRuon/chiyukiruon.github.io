@@ -32,7 +32,7 @@ menu:
         - /archive.html
         - icon-container
     好友:
-        - /py.html
+        - /friends.html
     关于:
         - /about.html
         - icon-info-circle
@@ -42,7 +42,7 @@ widgets:
       enable: true
       options: 
         search: 
-            type: engine # 可选engine（用搜索引擎搜索）、swiftype、或local（本地搜索）
+            type: local # 可选engine（用搜索引擎搜索）、swiftype、或local（本地搜索）
             url: https://cn.bing.com/search?q=site:chiyukiruon.com # 搜索引擎地址，在type为swiftype时无效 e.g:https://www.google.com/search?q={你的博客链接}
             id: <swiftype-id> # swiftype的id，见启用教程。在type为engine时无效
     - name: social
