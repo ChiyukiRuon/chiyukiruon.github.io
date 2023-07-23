@@ -24,13 +24,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1690043085177">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1690124939857">
     
-    <link rel="stylesheet" href="/css/style.css?v=1690043085177">
+    <link rel="stylesheet" href="/css/style.css?v=1690124939857">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1690043085177">
+            <link rel="stylesheet" href="/custom.css?v=1690124939857">
         
     
 
@@ -39,7 +39,7 @@
 <script src="/lib/fancybox/fancybox.umd.js" async></script>
 
 
-    <script async src="/js/app.js?v=1690043085177"></script>
+    <script async src="/js/app.js?v=1690124939857"></script>
     
      
 
@@ -70,7 +70,7 @@
     <div class="nexmoe-count">
         <div><span>文章</span>1</div>
         <div><span>标签</span>0</div>
-        <div><span>分类</span>0</div>
+        <div><span>分类</span>1</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -88,7 +88,7 @@
             </div>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/py" title="好友">
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/friends" title="好友">
             <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
             <div class="mdui-list-item-content">
                 好友
@@ -108,14 +108,20 @@
             
             <div class="nexmoe-widget-wrap">
     <div class="nexmoe-widget nexmoe-search">
-         
-            <form id="search_form" action_e="https://cn.bing.com/search?q=site:chiyukiruon.com" onsubmit="return search();">
-                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
             </form>
          
     </div>
 </div>
 
+
+	<script async src="/js/search.js?v=1690124939857"></script>
 
 
 
@@ -182,6 +188,30 @@
         
             
             
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/日常/">日常</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
 
         
             
@@ -208,7 +238,7 @@
       <ul>
         
           <li>
-            <a href="/2023/07/22/wellcom/">欢迎来到千雪琉音の桃花源</a>
+            <a href="/2023/07/23/wellcom/">欢迎来到千雪琉音の桃花源</a>
           </li>
         
       </ul>
@@ -259,7 +289,7 @@
     <section class="nexmoe-posts">
     
     <div class="nexmoe-post">
-        <a href="/2023/07/22/wellcom/">
+        <a href="/2023/07/23/wellcom/">
             
                 <div class="nexmoe-post-cover mdui-ripple"> 
                     <img src="/images/background_kita.PNG" alt="欢迎来到千雪琉音の桃花源" loading="lazy">
@@ -271,6 +301,8 @@
         <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2023年07月23日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a>
         
         
     </div>
