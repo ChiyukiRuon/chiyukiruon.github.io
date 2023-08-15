@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>正方教务管理系统详细成绩获取的实例 - 千雪琉音の桃花源</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="/images/electro.ICO" type="image/x-icon" />
+    <meta name="description" content="说明 本文的实例基于杭州电子科技大学信息工程学院教务系统编写，对于其它使用正方教务管理系统的学校教务可能并不完全适用，请具体情况具体分析 本文以及本文所提到的工具并不是杭州电子科技大学信息工程学院官方的工具，也不代表杭州电子科技大学信息工程学院的任何立场  原理正方教务系统在点击查询成绩时会发出一个请求xscjcx_dq.aspx，通过F12的网络中查看这个请求的载荷，我们会发现一个叫做__VIE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正方教务管理系统详细成绩获取的实例">
+<meta property="og:url" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/">
+<meta property="og:site_name" content="千雪琉音の桃花源">
+<meta property="og:description" content="说明 本文的实例基于杭州电子科技大学信息工程学院教务系统编写，对于其它使用正方教务管理系统的学校教务可能并不完全适用，请具体情况具体分析 本文以及本文所提到的工具并不是杭州电子科技大学信息工程学院官方的工具，也不代表杭州电子科技大学信息工程学院的任何立场  原理正方教务系统在点击查询成绩时会发出一个请求xscjcx_dq.aspx，通过F12的网络中查看这个请求的载荷，我们会发现一个叫做__VIE">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/1-1.png">
+<meta property="og:image" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/1-2.png">
+<meta property="og:image" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/2-1.png">
+<meta property="article:published_time" content="2023-08-15T14:25:35.000Z">
+<meta property="article:modified_time" content="2023-08-15T16:50:13.146Z">
+<meta property="article:author" content="千雪琉音">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Element Plus">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/1-1.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1692118231432">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1692118231432">
+
+    
+        
+            <link rel="stylesheet" href="/custom.css?v=1692118231432">
+        
+    
+
+    
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+
+
+    <script async src="/js/app.js?v=1692118231433"></script>
+    
+     
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" 
+            style="background-image: url(/images/background_kita.PNG)"
+        ></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="千雪琉音" class="mdui-btn mdui-btn-icon"><img src="/images/arimakana.JPG" alt="千雪琉音"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="千雪琉音">
+            <img src="/images/arimakana.JPG" alt="千雪琉音" alt="千雪琉音">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>2</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive" title="归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/friends" title="好友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                好友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about" title="关于">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+        
+            
+            <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1692118231433"></script>
+
+
+
+        
+            
+            <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/33908380"
+			target="_blank"
+			mdui-tooltip="{content: 'Bilibili'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/ChiyukiRuon"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://twitter.com/ChiyukiRuon"
+			target="_blank"
+			mdui-tooltip="{content: 'Twitter'}"
+			style="
+				color: rgb(59, 151, 239);
+				background-color: rgba(59, 151, 239, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-twitter"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://steamcommunity.com/id/chiyukiruon/"
+			target="_blank"
+			mdui-tooltip="{content: 'Steam'}"
+			style="
+				color: rgb(0, 73, 134);
+				background-color: rgba(0, 73, 134, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-steam"
+			></i> </a
+		>
+	</div>
+</div>
+
+        
+            
+            
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/前端/">前端</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/日常/">日常</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+        
+            
+            
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Element-Plus/" style="font-size: 10px;">Element Plus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(3);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+        
+            
+            
+            
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+
+        
+            
+            
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/15/wellcom/">欢迎来到千雪琉音の桃花源</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/15/hziee-score-detail/">正方教务管理系统详细成绩获取的实例</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+        
+            
+            <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://chiyukiruon.top" target="_blank" >
+                    <img src="https://static.chiyukiruon.top/images/touxiang_01.GIF" alt="镜像站"></img>
+                    <p>镜像站</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+        
+    </aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 千雪琉音
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a href="https://icp.gov.moe/?keyword=20230535" target="_blank">萌ICP备20230535号</a>
+
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+    <div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="/2023/08/15/hziee-score-detail/cover.png" alt="正方教务管理系统详细成绩获取的实例" loading="lazy">
+            <h1>正方教务管理系统详细成绩获取的实例</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年08月15日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约845字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要3分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>本文的实例基于杭州电子科技大学信息工程学院教务系统编写，对于其它使用正方教务管理系统的学校教务可能并不完全适用，请具体情况具体分析</li>
+<li>本文以及本文所提到的工具并不是杭州电子科技大学信息工程学院官方的工具，也不代表杭州电子科技大学信息工程学院的任何立场</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>正方教务系统在点击查询成绩时会发出一个请求<code>xscjcx_dq.aspx</code><br>，通过F12的网络中查看这个请求的载荷，我们会发现一个叫做<code>__VIEWSTATE</code>的数据<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="/2023/08/15/hziee-score-detail/1-1.png" alt="图1-1 请求负载" data-caption="图1-1 请求负载" loading="lazy"><br>这串数据是一个Base64编码的字符串，它编码前的内容就是页面中显示成绩的表格，其中包括了姓名，学号等详细信息。<br>解码后的文本存在许多乱码是因为除了数据之外它还包括了用于渲染表格时用的格式化字符<br>我所做的就是去掉这些乱码，提取出有用的信息，提高可读性<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="/2023/08/15/hziee-score-detail/1-2.png" alt="图1-2 Base64解码后" data-caption="图1-2 Base64解码后" loading="lazy"></p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="信息处理"><a href="#信息处理" class="headerlink" title="信息处理"></a>信息处理</h3><ol>
+<li>首先初步过滤出正常字符串<br>这里我选择使用正则表达式<code>/[\u4e00-\u9fa5a-zA-Z0-9\-()（）.+\s]+(?=dd)/g</code>来提取解码后字符串中的有效信息:<ul>
+<li><code>\u4e00-\u9fa5a-zA-Z0-9\</code>用来匹配中英文及数字字符串，筛选出科目名称、成绩、开课学院等</li>
+<li><code>-()（）.+\s</code>用来匹配连字符‘-’，中英文括号、小数点，筛选出课号，学分等</li>
+<li><code>+(?=dd)/g</code>有效信息后总是以<strong>dd</strong>结尾<figure class="highlight javascript"><figcaption><span>JS代码实现</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fliter</span>(<span class="params">string</span>) &#123;</span><br><span class="line">   <span class="keyword">let</span> text = <span class="variable language_">this</span>.<span class="title function_">base64ToString</span>(string)</span><br><span class="line">   <span class="keyword">const</span> regex = <span class="regexp">/[\u4e00-\u9fa5a-zA-Z0-9\-()（）.+\s]+(?=dd)/g</span>;</span><br><span class="line">   <span class="keyword">const</span> result = text.<span class="title function_">match</span>(regex).<span class="title function_">map</span>(<span class="function"><span class="params">str</span> =&gt;</span> str.<span class="title function_">replace</span>(<span class="regexp">/dd$/</span>, <span class="string">&#x27;&#x27;</span>));</span><br><span class="line">           </span><br><span class="line">   <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>格式化信息<br>使用正则表达式过滤出正常字符串后我们获得了一个数组，但是这个数组对于程序读取还是有点困难，因此我们要将它格式化成方便程序读取展示的数据<ul>
+<li>遍历数组，使用正则表达式<code>/([\d-]+)-[a-zA-Z0-9-]+-\d+/</code>来判断某一门课程的数据是否已经结束<del>正则真好用</del></li>
+<li>如果当前和正则匹配上，说明一门课程已经结束，则将当前数据之前的数据以数组的形式添加到结果数组中</li>
+<li>最后会将数据格式化成一个数组，数组的元素是每一门课的信息数组，方便遍历展示<figure class="highlight javascript"><figcaption><span>JS代码实现</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">split</span>(<span class="params">courseList</span>) &#123;</span><br><span class="line"> <span class="keyword">const</span> regex = <span class="regexp">/([\d-]+)-[a-zA-Z0-9-]+-\d+/</span>;</span><br><span class="line"> <span class="keyword">const</span> result = [];</span><br><span class="line"> <span class="keyword">let</span> currentSection = [];</span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; courseList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">     <span class="keyword">const</span> item = courseList[i];</span><br><span class="line">     <span class="keyword">const</span> match = item.<span class="title function_">match</span>(regex);</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> (match) &#123;</span><br><span class="line">         <span class="keyword">if</span> (currentSection.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">             result.<span class="title function_">push</span>(currentSection);</span><br><span class="line">             currentSection = [];</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     currentSection.<span class="title function_">push</span>(item);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (currentSection.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">     result.<span class="title function_">push</span>(currentSection);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="variable language_">this</span>.<span class="property">resultList</span> = result</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="信息展示"><a href="#信息展示" class="headerlink" title="信息展示"></a>信息展示</h3><ol>
+<li>经过格式化后的信息就可以传到前端页面让组件渲染了<ul>
+<li>前端使用<code>v-for</code>配合Element Plus的Card组件进行成绩的展示<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="/2023/08/15/hziee-score-detail/2-1.png" alt="图2-1 前端页面渲染" data-caption="图2-1 前端页面渲染" loading="lazy"></li>
+<li>根据index值判断科目名称</li>
+<li>使用正则&#x2F;<code>^(\d|\d\.\d|\.\d|\d\.)$/</code>判断是否为学分</li>
+<li>根据分数的下一个元素是否为开课学院判断是否为最终成绩</li>
+</ul>
+</li>
+</ol>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>项目源代码：<a target="_blank" rel="noopener" href="https://github.com/ChiyukiRuon/hziee-score-detail">Github</a></li>
+<li>项目地址：<ul>
+<li><a target="_blank" rel="noopener" href="https://scoredetail.chiyukiruon.com/">杭电信工详细成绩查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://scoredetail.chiyukiruon.top/">杭电信工详细成绩查询(备用)</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>千雪琉音<br>
+        <strong>本文链接：</strong><a href="https://chiyukiruon.com/2023/08/15/hziee-score-detail/" title="https:&#x2F;&#x2F;chiyukiruon.com&#x2F;2023&#x2F;08&#x2F;15&#x2F;hziee-score-detail&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;chiyukiruon.com&#x2F;2023&#x2F;08&#x2F;15&#x2F;hziee-score-detail&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Element-Plus/" rel="tag">Element Plus</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Vue/" rel="tag">Vue</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1692118231370"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container"></div>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'e948606b6039be9b1bb8',
+    clientSecret: '9a1fffd36848027ad5ca522f9f152104c268672d',
+    repo: 'chiyukiruon.com.comments',
+    owner: 'ChiyukiRuon',
+    admin: [ 'ChiyukiRuon' ],
+    id: location.pathname, // 标识评论所属的页面 ID
+    distractionFreeMode: false // 关闭全屏模式
+  });
+  
+  gitalk.render('gitalk-container');
+</script>
+
+      </div>
+  
+</div>
+</div>
+        <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">信息处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA"><span class="toc-number">3.2.</span> <span class="toc-text">信息展示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">4.</span> <span class="toc-text">其它</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+    
+</body>
+
+</html>
