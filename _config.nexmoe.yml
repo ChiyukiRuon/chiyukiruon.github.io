@@ -94,28 +94,18 @@ widgets:
       enable: true
       options: 
         widgetLink: #链接组件
-            - title: 镜像站
-              img: https://static.chiyukiruon.top/images/touxiang_01.GIF
-              link : https://chiyukiruon.top
 
 copyTip: "著作权归作者所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
 
 slotHead: |
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-490WG5Y8HF"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-490WG5Y8HF');
-  </script>
 
 slotFooter: | 
 #  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
 
 # 自定义侧边栏尾部内容
 slotSidebar: |
-  <br><a href="https://icp.gov.moe/?keyword=20230535" target="_blank">萌ICP备20230535号</a>
+  <br><a href="http://beian.miit.gov.cn" target="blank">浙ICP备2021035003号-1</a>
+  <br><a href="https://icp.gov.moe/?keyword=20225223" target="_blank">萌ICP备20225223号</a>
 
 # 评论框插槽
 slotComment: |
