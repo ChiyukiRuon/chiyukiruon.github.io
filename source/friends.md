@@ -7,7 +7,7 @@ layout: py
 - [![主站](https://chiyukiruon.com/images/arimakana.JPG)](https://chiyukiruon.com/ "")
 
 ## 友情链接
-`还没有链接呢(。・∀・)ノ`
+- [![Taranagi](https://m.taranagi.cc/upload/0def7ad4ac874e07602b4ff5118cd56c.png)](https://m.taranagi.cc/ "Taranagi")
 
 ## 添加友链
 欢迎互换友链~
