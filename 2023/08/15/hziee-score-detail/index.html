@@ -1,16 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="zh"><head>
+<title>正方教务管理系统详细成绩获取的实例 - 千雪琉音の桃花源</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
-<html lang="zh-CN">
-
-<head>
-    
-    <title>正方教务管理系统详细成绩获取的实例 - 千雪琉音の桃花源</title>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    
-    <link rel="shortcut icon" href="/images/electro.ICO" type="image/x-icon" />
-    <meta name="description" content="说明 本文的实例基于杭州电子科技大学信息工程学院教务系统编写，对于其它使用正方教务管理系统的学校教务可能并不完全适用，请具体情况具体分析 本文以及本文所提到的工具并不是杭州电子科技大学信息工程学院官方的工具，也不代表杭州电子科技大学信息工程学院的任何立场  原理正方教务系统在点击查询成绩时会发出一个请求xscjcx_dq.aspx，通过F12的网络中查看这个请求的载荷，我们会发现一个叫做__VIE">
+<link rel="shortcut icon" href="/images/electro.ICO" type="image/x-icon" />
+<meta name="description" content="说明 本文的实例基于杭州电子科技大学信息工程学院教务系统编写，对于其它使用正方教务管理系统的学校教务可能并不完全适用，请具体情况具体分析 本文以及本文所提到的工具并不是杭州电子科技大学信息工程学院官方的工具，也不代表杭州电子科技大学信息工程学院的任何立场  原理正方教务系统在点击查询成绩时会发出一个请求xscjcx_dq.aspx，通过F12的网络中查看这个请求的载荷，我们会发现一个叫做__VIE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正方教务管理系统详细成绩获取的实例">
 <meta property="og:url" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/">
@@ -23,38 +19,41 @@
 <meta property="og:image" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/2-2.png">
 <meta property="og:image" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/2-3.png">
 <meta property="article:published_time" content="2023-08-15T14:25:35.000Z">
-<meta property="article:modified_time" content="2024-02-21T16:44:12.989Z">
+<meta property="article:modified_time" content="2024-04-05T13:07:23.009Z">
 <meta property="article:author" content="千雪琉音">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="Element Plus">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://chiyukiruon.com/2023/08/15/hziee-score-detail/1-1.png">
-    
+
 <link rel="stylesheet" href="/lib/fancybox/fancybox.css">
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1708533865335">
-    
-    <link rel="stylesheet" href="/css/style.css?v=1708533865335">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1712322459874">
+
+<link rel="stylesheet" href="/css/style.css?v=1712322459874">
+
+
+
 
     
-        
-            <link rel="stylesheet" href="/custom.css?v=1708533865335">
-        
+        <link rel="stylesheet" href="/custom.css?v=1712322459875">
     
 
-    
+
+
 <script src="/lib/mdui_043tiny/mdui.js" async></script>
 <script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
 
 
-    <script async src="/js/app.js?v=1708533865335"></script>
-    
-     
+<script async src="/js/app.js?v=1712322459875"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-490WG5Y8HF"></script>
+ 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-490WG5Y8HF"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -63,24 +62,19 @@ gtag('js', new Date());
 gtag('config', 'G-490WG5Y8HF');
 </script>
 
-<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body class="mdui-drawer-body-left">
-    <div id="nexmoe-background">
-        <div class="nexmoe-bg" 
-            style="background-image: url(/images/background_kita.PNG)"
-        ></div>
-        <div class="mdui-appbar mdui-shadow-0">
-            <div class="mdui-toolbar">
-                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
-                <div class="mdui-toolbar-spacer"></div>
-                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
-                <a href="/" title="千雪琉音" class="mdui-btn mdui-btn-icon"><img src="/images/arimakana.JPG" alt="千雪琉音"></a>
-            </div>
-        </div>
-    </div>
-    <div id="nexmoe-header">
-        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-shiki-plugin@latest/lib/codeblock.css">
+<style>:root{--hl-color:#90a4ae;--hl-bg:#f6f8fa;--hltools-bg:#e6ebf1;--hltools-color:#90a4ae;--hlnumber-bg:#f6f8fa;--hlnumber-color:rgba(144,164,174,0.5);--hlscrollbar-bg:#dce4eb;--hlexpand-bg:linear-gradient(180deg,rgba(246,248,250,0.1),rgba(246,248,250,0.9))}</style>
+    <style>
+    .code-expand-btn:not(.expand-done) ~ div.codeblock,
+    .code-expand-btn:not(.expand-done) ~ * div.codeblock {
+      overflow: hidden;
+      height: 360px;
+    }
+    </style>
+  <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(/images/background_kita.PNG)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="千雪琉音"><img src="/images/arimakana.JPG" alt="千雪琉音"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
     <div class="nexmoe-avatar mdui-ripple">
         <a href="/" title="千雪琉音">
             <img src="/images/arimakana.JPG" alt="千雪琉音" alt="千雪琉音">
@@ -122,10 +116,10 @@ gtag('config', 'G-490WG5Y8HF');
         </a>
         
     </div>
-    <aside id="nexmoe-sidebar">
+    
+    
         
-            
-            <div class="nexmoe-widget-wrap">
+        <div class="nexmoe-widget-wrap">
     <div class="nexmoe-widget nexmoe-search">
         
             <form id="search_form">
@@ -140,13 +134,13 @@ gtag('config', 'G-490WG5Y8HF');
 </div>
 
 
-	<script async src="/js/search.js?v=1708533865335"></script>
+	<script async src="/js/search.js?v=1712322459875"></script>
 
 
 
+    
         
-            
-            <div class="nexmoe-widget-wrap">
+        <div class="nexmoe-widget-wrap">
 	<div class="nexmoe-widget nexmoe-social">
 		<a
 			class="mdui-ripple"
@@ -204,9 +198,9 @@ gtag('config', 'G-490WG5Y8HF');
 	</div>
 </div>
 
+    
         
-            
-            
+        
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章分类</h3>
     <div class="nexmoe-widget">
@@ -239,9 +233,9 @@ gtag('config', 'G-490WG5Y8HF');
   </div>
 
 
+    
         
-            
-            
+        
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
       <a href="/tags/Element-Plus/" style="font-size: 10px;">Element Plus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%9C%A3%E5%9C%B0%E5%B7%A1%E7%A4%BC/" style="font-size: 10px;">圣地巡礼</a> <a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 10px;">旅行</a> <a href="/tags/%E6%97%A5%E6%9C%AC/" style="font-size: 10px;">日本</a>
@@ -265,10 +259,10 @@ gtag('config', 'G-490WG5Y8HF');
     
   </div>
 
+    
         
-            
-            
-            
+        
+        
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">文章归档</h3>
     <div class="nexmoe-widget">
@@ -278,9 +272,9 @@ gtag('config', 'G-490WG5Y8HF');
 
 
 
+    
         
-            
-            
+        
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">最新文章</h3>
     <div class="nexmoe-widget">
@@ -302,9 +296,9 @@ gtag('config', 'G-490WG5Y8HF');
     </div>
   </div>
 
+    
         
-            
-            <div class="nexmoe-widget-wrap">
+        <div class="nexmoe-widget-wrap">
     <div class="nexmoe-widget nexmoe-link">
 		<ul>
         
@@ -330,8 +324,8 @@ gtag('config', 'G-490WG5Y8HF');
 }
 </style>
 
-        
-    </aside>
+    
+   
     <div class="nexmoe-copyright">
         &copy; 2024 千雪琉音
         Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
@@ -339,11 +333,7 @@ gtag('config', 'G-490WG5Y8HF');
         <br><a href="https://icp.gov.moe/?keyword=20230535" target="_blank">萌ICP备20230535号</a>
 
     </div>
-</div><!-- .nexmoe-drawer -->
-    </div>
-    <div id="nexmoe-content">
-        <div class="nexmoe-primary">
-    <div class="nexmoe-post">
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
   <article>
     
         <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
@@ -359,7 +349,7 @@ gtag('config', 'G-490WG5Y8HF');
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约1.2k字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约1.1k字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要4分钟</a>
 
     </div>
@@ -379,14 +369,85 @@ gtag('config', 'G-490WG5Y8HF');
 <li>首先初步过滤出正常字符串<br>这里我选择使用正则表达式<code>/[\u4e00-\u9fa5a-zA-Z0-9\-()（）.+\s]+(?=dd)/g</code>来提取解码后字符串中的有效信息:<ul>
 <li><code>\u4e00-\u9fa5a-zA-Z0-9\</code>用来匹配中英文及数字字符串，筛选出科目名称、成绩、开课学院等</li>
 <li><code>-()（）.+\s</code>用来匹配连字符‘-’，中英文括号、小数点，筛选出课号，学分等</li>
-<li><code>+(?=dd)/g</code>有效信息后总是以<strong>dd</strong>结尾<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fliter</span>(<span class="params">string</span>) &#123;</span><br><span class="line">   <span class="keyword">let</span> text = <span class="variable language_">this</span>.<span class="title function_">base64ToString</span>(string)</span><br><span class="line">   <span class="keyword">const</span> regex = <span class="regexp">/[\u4e00-\u9fa5a-zA-Z0-9\-()（）.+\s]+(?=dd)/g</span>;</span><br><span class="line">   <span class="keyword">const</span> result = text.<span class="title function_">match</span>(regex).<span class="title function_">map</span>(<span class="function"><span class="params">str</span> =&gt;</span> str.<span class="title function_">replace</span>(<span class="regexp">/dd$/</span>, <span class="string">&#x27;&#x27;</span>));</span><br><span class="line">           </span><br><span class="line">   <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>+(?=dd)/g</code>有效信息后总是以<strong>dd</strong>结尾<figure class="shiki javascript"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color: #D73A49">function</span><span style="color: #24292E"> </span><span style="color: #6F42C1">fliter</span><span style="color: #24292E">(</span><span style="color: #E36209">string</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">   </span><span style="color: #D73A49">let</span><span style="color: #24292E"> text </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #005CC5">this</span><span style="color: #24292E">.</span><span style="color: #6F42C1">base64ToString</span><span style="color: #24292E">(string)</span></span>
+<span class="line"><span style="color: #24292E">   </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">regex</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #032F62"> /</span><span style="color: #005CC5">[\u4e00-\u9fa5a-zA-Z0-9\-()（）.+\s]</span><span style="color: #D73A49">+</span><span style="color: #032F62">(?=dd)/</span><span style="color: #D73A49">g</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E">   </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">result</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> text.</span><span style="color: #6F42C1">match</span><span style="color: #24292E">(regex).</span><span style="color: #6F42C1">map</span><span style="color: #24292E">(</span><span style="color: #E36209">str</span><span style="color: #24292E"> </span><span style="color: #D73A49">=&gt;</span><span style="color: #24292E"> str.</span><span style="color: #6F42C1">replace</span><span style="color: #24292E">(</span><span style="color: #032F62">/dd</span><span style="color: #D73A49">$</span><span style="color: #032F62">/</span><span style="color: #24292E">, </span><span style="color: #032F62">&#39;&#39;</span><span style="color: #24292E">));</span></span>
+<span class="line"><span style="color: #24292E">           </span></span>
+<span class="line"><span style="color: #24292E">   </span><span style="color: #D73A49">return</span><span style="color: #24292E"> result</span></span>
+<span class="line"><span style="color: #24292E">}</span></span></code></pre></div></div></figure></li>
 </ul>
 </li>
 <li>格式化信息<br>使用正则表达式过滤出正常字符串后我们获得了一个数组，但是这个数组对于程序读取还是有点困难，因此我们要将它格式化成方便程序读取展示的数据<ul>
 <li>遍历数组，使用正则表达式<code>/([\d-]+)-[a-zA-Z0-9-]+-\d+/</code>来判断某一门课程的数据是否已经结束<del>正则真好用</del></li>
 <li>如果当前和正则匹配上，说明一门课程已经结束，则将当前数据之前的数据以数组的形式添加到结果数组中</li>
-<li>最后会将数据格式化成一个数组，数组的元素是每一门课的信息数组，方便遍历展示<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">split</span>(<span class="params">courseList</span>) &#123;</span><br><span class="line"> <span class="keyword">const</span> regex = <span class="regexp">/([\d-]+)-[a-zA-Z0-9-]+-\d+/</span>;</span><br><span class="line"> <span class="keyword">const</span> result = [];</span><br><span class="line"> <span class="keyword">let</span> currentSection = [];</span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; courseList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">     <span class="keyword">const</span> item = courseList[i];</span><br><span class="line">     <span class="keyword">const</span> match = item.<span class="title function_">match</span>(regex);</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> (match) &#123;</span><br><span class="line">         <span class="keyword">if</span> (currentSection.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">             result.<span class="title function_">push</span>(currentSection);</span><br><span class="line">             currentSection = [];</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     currentSection.<span class="title function_">push</span>(item);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (currentSection.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">     result.<span class="title function_">push</span>(currentSection);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="variable language_">this</span>.<span class="property">resultList</span> = result</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-在1.3.0版本后我更改了成绩数据的数据结构，格式化数据从嵌套数组改为对象数组。<br>将判断具体信息的任务从组件渲染时判断改为直接使用js做判断，并在格式化数据时加入了一些用于状态判断的字段，组件渲染时直接读取对应字段即可<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">formatResultData</span>(<span class="params">courseList</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> resultList = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>;i &lt; courseList.<span class="property">length</span>;i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> item = &#123;&#125;</span><br><span class="line">        <span class="keyword">const</span> assessmentScore = []</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>;j &lt; courseList[i].<span class="property">length</span>;j++) &#123;</span><br><span class="line">            <span class="keyword">let</span> courseListItem = courseList[i]</span><br><span class="line">            <span class="keyword">if</span> (j === <span class="number">0</span>) &#123;</span><br><span class="line">                item.<span class="property">courseId</span> = courseListItem[j]</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (j === <span class="number">4</span>) &#123;</span><br><span class="line">                item.<span class="property">courseName</span> = courseListItem[j].<span class="title function_">trimStart</span>().<span class="title function_">replace</span>(<span class="regexp">/^\d/g</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_">isCredits</span>(courseListItem[j]) &amp;&amp; j &gt; <span class="number">4</span>) &#123;</span><br><span class="line">                item.<span class="property">credits</span> = courseListItem[j].<span class="title function_">trimStart</span>()</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (j &gt; <span class="number">6</span> &amp;&amp; courseListItem[j] !== <span class="string">&#x27;d&#x27;</span> &amp;&amp; !<span class="title function_">isCredits</span>(courseListItem[j])) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="title function_">isFinalScore</span>(courseListItem, j)) &#123;</span><br><span class="line">                    item.<span class="property">finalScore</span> = courseListItem[j].<span class="title function_">trimStart</span>()</span><br><span class="line">                    item.<span class="property">isPass</span> = <span class="title function_">isPass</span>(courseListItem[j])</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_">isCredits</span>(courseListItem[j-<span class="number">1</span>])) &#123;</span><br><span class="line">                    item.<span class="property">performanceScore</span> = courseListItem[j].<span class="title function_">trimStart</span>()</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (courseListItem[j] === <span class="string">&#x27;是&#x27;</span>) &#123;</span><br><span class="line">                        item.<span class="property">isRenovate</span> = courseListItem[j] === <span class="string">&#x27;是&#x27;</span></span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (courseListItem[j].<span class="title function_">match</span>(<span class="regexp">/(学院|学部)/</span>)) &#123;</span><br><span class="line">                        item.<span class="property">college</span> = courseListItem[j].<span class="title function_">trimStart</span>()</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        assessmentScore.<span class="title function_">push</span>(courseListItem[j].<span class="title function_">trimStart</span>())</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        item.<span class="property">assessmentScore</span> = assessmentScore</span><br><span class="line">        resultList.<span class="title function_">push</span>(item)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> resultList</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>最后会将数据格式化成一个数组，数组的元素是每一门课的信息数组，方便遍历展示<figure class="shiki javascript"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color: #D73A49">function</span><span style="color: #24292E"> </span><span style="color: #6F42C1">split</span><span style="color: #24292E">(</span><span style="color: #E36209">courseList</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">regex</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #032F62"> /(</span><span style="color: #005CC5">[\d-]</span><span style="color: #D73A49">+</span><span style="color: #032F62">)-</span><span style="color: #005CC5">[a-zA-Z0-9-]</span><span style="color: #D73A49">+</span><span style="color: #032F62">-</span><span style="color: #005CC5">\d</span><span style="color: #D73A49">+</span><span style="color: #032F62">/</span><span style="color: #24292E">;</span></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">result</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> [];</span></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #D73A49">let</span><span style="color: #24292E"> currentSection </span><span style="color: #D73A49">=</span><span style="color: #24292E"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #D73A49">for</span><span style="color: #24292E"> (</span><span style="color: #D73A49">let</span><span style="color: #24292E"> i </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #005CC5">0</span><span style="color: #24292E">; i </span><span style="color: #D73A49">&lt;</span><span style="color: #24292E"> courseList.</span><span style="color: #005CC5">length</span><span style="color: #24292E">; i</span><span style="color: #D73A49">++</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">     </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">item</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseList[i];</span></span>
+<span class="line"><span style="color: #24292E">     </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">match</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> item.</span><span style="color: #6F42C1">match</span><span style="color: #24292E">(regex);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">     </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (match) {</span></span>
+<span class="line"><span style="color: #24292E">         </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (currentSection.</span><span style="color: #005CC5">length</span><span style="color: #24292E"> </span><span style="color: #D73A49">&gt;</span><span style="color: #24292E"> </span><span style="color: #005CC5">0</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">             result.</span><span style="color: #6F42C1">push</span><span style="color: #24292E">(currentSection);</span></span>
+<span class="line"><span style="color: #24292E">             currentSection </span><span style="color: #D73A49">=</span><span style="color: #24292E"> [];</span></span>
+<span class="line"><span style="color: #24292E">         }</span></span>
+<span class="line"><span style="color: #24292E">     }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">     currentSection.</span><span style="color: #6F42C1">push</span><span style="color: #24292E">(item);</span></span>
+<span class="line"><span style="color: #24292E"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (currentSection.</span><span style="color: #005CC5">length</span><span style="color: #24292E"> </span><span style="color: #D73A49">&gt;</span><span style="color: #24292E"> </span><span style="color: #005CC5">0</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">     result.</span><span style="color: #6F42C1">push</span><span style="color: #24292E">(currentSection);</span></span>
+<span class="line"><span style="color: #24292E"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #005CC5">this</span><span style="color: #24292E">.resultList </span><span style="color: #D73A49">=</span><span style="color: #24292E"> result</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #D73A49">return</span><span style="color: #24292E"> result;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E">}</span></span></code></pre></div></div></figure>
+在1.3.0版本后我更改了成绩数据的数据结构，格式化数据从嵌套数组改为对象数组。<br>将判断具体信息的任务从组件渲染时判断改为直接使用js做判断，并在格式化数据时加入了一些用于状态判断的字段，组件渲染时直接读取对应字段即可<figure class="shiki javascript"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></div><div class="code"><pre class="shiki github-light"><code><span class="line"><span style="color: #D73A49">function</span><span style="color: #24292E"> </span><span style="color: #6F42C1">formatResultData</span><span style="color: #24292E">(</span><span style="color: #E36209">courseList</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">resultList</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> []</span></span>
+<span class="line"><span style="color: #24292E">    </span><span style="color: #D73A49">for</span><span style="color: #24292E"> (</span><span style="color: #D73A49">let</span><span style="color: #24292E"> i </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #005CC5">1</span><span style="color: #24292E">;i </span><span style="color: #D73A49">&lt;</span><span style="color: #24292E"> courseList.</span><span style="color: #005CC5">length</span><span style="color: #24292E">;i</span><span style="color: #D73A49">++</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">        </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">item</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> {}</span></span>
+<span class="line"><span style="color: #24292E">        </span><span style="color: #D73A49">const</span><span style="color: #24292E"> </span><span style="color: #005CC5">assessmentScore</span><span style="color: #24292E"> </span><span style="color: #D73A49">=</span><span style="color: #24292E"> []</span></span>
+<span class="line"><span style="color: #24292E">        </span><span style="color: #D73A49">for</span><span style="color: #24292E"> (</span><span style="color: #D73A49">let</span><span style="color: #24292E"> j </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #005CC5">0</span><span style="color: #24292E">;j </span><span style="color: #D73A49">&lt;</span><span style="color: #24292E"> courseList[i].</span><span style="color: #005CC5">length</span><span style="color: #24292E">;j</span><span style="color: #D73A49">++</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">            </span><span style="color: #D73A49">let</span><span style="color: #24292E"> courseListItem </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseList[i]</span></span>
+<span class="line"><span style="color: #24292E">            </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (j </span><span style="color: #D73A49">===</span><span style="color: #24292E"> </span><span style="color: #005CC5">0</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">                item.courseId </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseListItem[j]</span></span>
+<span class="line"><span style="color: #24292E">            }</span></span>
+<span class="line"><span style="color: #24292E">            </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (j </span><span style="color: #D73A49">===</span><span style="color: #24292E"> </span><span style="color: #005CC5">4</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">                item.courseName </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseListItem[j].</span><span style="color: #6F42C1">trimStart</span><span style="color: #24292E">().</span><span style="color: #6F42C1">replace</span><span style="color: #24292E">(</span><span style="color: #032F62">/</span><span style="color: #D73A49">^</span><span style="color: #005CC5">\d</span><span style="color: #032F62">/</span><span style="color: #D73A49">g</span><span style="color: #24292E">, </span><span style="color: #032F62">&quot;&quot;</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">            }</span></span>
+<span class="line"><span style="color: #24292E">            </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (</span><span style="color: #6F42C1">isCredits</span><span style="color: #24292E">(courseListItem[j]) </span><span style="color: #D73A49">&amp;&amp;</span><span style="color: #24292E"> j </span><span style="color: #D73A49">&gt;</span><span style="color: #24292E"> </span><span style="color: #005CC5">4</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">                item.credits </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseListItem[j].</span><span style="color: #6F42C1">trimStart</span><span style="color: #24292E">()</span></span>
+<span class="line"><span style="color: #24292E">            }</span></span>
+<span class="line"><span style="color: #24292E">            </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (j </span><span style="color: #D73A49">&gt;</span><span style="color: #24292E"> </span><span style="color: #005CC5">6</span><span style="color: #24292E"> </span><span style="color: #D73A49">&amp;&amp;</span><span style="color: #24292E"> courseListItem[j] </span><span style="color: #D73A49">!==</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;d&#39;</span><span style="color: #24292E"> </span><span style="color: #D73A49">&amp;&amp;</span><span style="color: #24292E"> </span><span style="color: #D73A49">!</span><span style="color: #6F42C1">isCredits</span><span style="color: #24292E">(courseListItem[j])) {</span></span>
+<span class="line"><span style="color: #24292E">                </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (</span><span style="color: #6F42C1">isFinalScore</span><span style="color: #24292E">(courseListItem, j)) {</span></span>
+<span class="line"><span style="color: #24292E">                    item.finalScore </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseListItem[j].</span><span style="color: #6F42C1">trimStart</span><span style="color: #24292E">()</span></span>
+<span class="line"><span style="color: #24292E">                    item.isPass </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #6F42C1">isPass</span><span style="color: #24292E">(courseListItem[j])</span></span>
+<span class="line"><span style="color: #24292E">                }</span><span style="color: #D73A49">else</span><span style="color: #24292E"> </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (</span><span style="color: #6F42C1">isCredits</span><span style="color: #24292E">(courseListItem[j</span><span style="color: #D73A49">-</span><span style="color: #005CC5">1</span><span style="color: #24292E">])) {</span></span>
+<span class="line"><span style="color: #24292E">                    item.performanceScore </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseListItem[j].</span><span style="color: #6F42C1">trimStart</span><span style="color: #24292E">()</span></span>
+<span class="line"><span style="color: #24292E">                }</span><span style="color: #D73A49">else</span><span style="color: #24292E"> {</span></span>
+<span class="line"><span style="color: #24292E">                    </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (courseListItem[j] </span><span style="color: #D73A49">===</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;是&#39;</span><span style="color: #24292E">) {</span></span>
+<span class="line"><span style="color: #24292E">                        item.isRenovate </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseListItem[j] </span><span style="color: #D73A49">===</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;是&#39;</span></span>
+<span class="line"><span style="color: #24292E">                    }</span><span style="color: #D73A49">else</span><span style="color: #24292E"> </span><span style="color: #D73A49">if</span><span style="color: #24292E"> (courseListItem[j].</span><span style="color: #6F42C1">match</span><span style="color: #24292E">(</span><span style="color: #032F62">/(学院</span><span style="color: #D73A49">|</span><span style="color: #032F62">学部)/</span><span style="color: #24292E">)) {</span></span>
+<span class="line"><span style="color: #24292E">                        item.college </span><span style="color: #D73A49">=</span><span style="color: #24292E"> courseListItem[j].</span><span style="color: #6F42C1">trimStart</span><span style="color: #24292E">()</span></span>
+<span class="line"><span style="color: #24292E">                    }</span><span style="color: #D73A49">else</span><span style="color: #24292E"> {</span></span>
+<span class="line"><span style="color: #24292E">                        assessmentScore.</span><span style="color: #6F42C1">push</span><span style="color: #24292E">(courseListItem[j].</span><span style="color: #6F42C1">trimStart</span><span style="color: #24292E">())</span></span>
+<span class="line"><span style="color: #24292E">                    }</span></span>
+<span class="line"><span style="color: #24292E">                }</span></span>
+<span class="line"><span style="color: #24292E">            }</span></span>
+<span class="line"><span style="color: #24292E">        }</span></span>
+<span class="line"><span style="color: #24292E">        item.assessmentScore </span><span style="color: #D73A49">=</span><span style="color: #24292E"> assessmentScore</span></span>
+<span class="line"><span style="color: #24292E">        resultList.</span><span style="color: #6F42C1">push</span><span style="color: #24292E">(item)</span></span>
+<span class="line"><span style="color: #24292E">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #24292E"> </span><span style="color: #D73A49">return</span><span style="color: #24292E"> resultList</span></span>
+<span class="line"><span style="color: #24292E">}</span></span></code></pre></div></div></figure></li>
 </ul>
 </li>
 </ol>
@@ -434,7 +495,7 @@ gtag('config', 'G-490WG5Y8HF');
 </div>
   
   
-    <script async src="/js/copy-codeblock.js?v=1708533865282"></script>
+    <script async src="/js/copy-codeblock.js?v=1712322459827"></script>
   
 
   
@@ -458,50 +519,45 @@ gtag('config', 'G-490WG5Y8HF');
 
       </div>
   
-</div>
-</div>
-        <div class="nexmoe-post-right">
-              <div class="nexmoe-fixed">
-                  <div class="nexmoe-tool"> 
-                    
-                      
-                        
-                          
-                          
-                              <button class="mdui-fab catalog" style="overflow:unset;">
-                                  <i class="nexmoefont icon-i-catalog"></i>
-                                  <div class="nexmoe-toc">
-                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">信息处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA"><span class="toc-number">3.2.</span> <span class="toc-text">信息展示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">4.</span> <span class="toc-text">其它</span></a></li></ol>
-                                  </div>
-                              </button>
-                          
-                          
-                      
-                    
-                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
-                  </div>
-              </div>
-            </div>
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">信息处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA"><span class="toc-number">3.2.</span> <span class="toc-text">信息展示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">4.</span> <span class="toc-text">其它</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
     </div>
-    <div id="nexmoe-search-space">
-	<div class="search-container">
-		<div class="search-header">
-			<div class="search-input-container">
-				<input
-					class="search-input"
-					type="text"
-					placeholder="搜索"
-					oninput="sinput();"
-				/>
-			</div>
-			<a class="search-close" onclick="sclose();">×</a>
-		</div>
-		<div class="search-body"></div>
-	</div>
-</div>
-
-    
-    
-</body>
-
-</html>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div></div><!-- hexo injector body_end start -->
+  <script>
+  const CODE_CONFIG = {
+    beautify: false,
+    highlightCopy: true,
+    highlightLang: false,
+    highlightHeightLimit: 360,
+    isHighlightShrink: false,
+    copy: {
+      success: 'Copy Success',
+      error: 'Copy Error',
+      noSupport: 'Browser Not Support',
+    }
+  };
+  console.log(
+    `%c hexo-shiki-plugin %c v1.0.25 %c https://github.com/nova1751/hexo-shiki-plugin`,
+    "color: #fff; background: #5f5f5f",
+    "color: #fff; background: #80c8f8",
+    ""
+  );
+  </script>
+  <!-- hexo injector body_end end --></body></html>
