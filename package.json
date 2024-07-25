@@ -14,6 +14,8 @@
   "dependencies": {
     "@nexmoe/hexo-renderer-inferno": "^0.2.1",
     "hexo": "^6.3.0",
+    "hexo-admonition": "^1.1.2",
+    "hexo-bangumis": "^1.0.9",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-index": "^3.0.0",
@@ -22,6 +24,7 @@
     "hexo-renderer-marked": "^6.0.0",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
+    "hexo-tag-color-block": "^0.0.3",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-theme-nexmoe": "^4.1.5",
     "hexo-wordcount": "^6.0.1"
