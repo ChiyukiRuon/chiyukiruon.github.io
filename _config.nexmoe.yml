@@ -31,6 +31,9 @@ menu:
     归档:
         - /archive.html
         - icon-container
+    追番:
+        - /bangumi
+        - icon-bilibili
     好友:
         - /friends.html
     关于:
@@ -94,9 +97,6 @@ widgets:
       enable: true
       options: 
         widgetLink: #链接组件
-            - title: 镜像站
-              img: https://static.chiyukiruon.top/images/touxiang_01.GIF
-              link : https://chiyukiruon.top
 
 copyTip: "著作权归作者所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
 
@@ -137,7 +137,7 @@ slotComment: |
   </script>
 
 slotCopyright: | 
-  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+#  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
 
 slotArticleEnd: | 
 #  <p><img src="https://i.dawnlab.me/53a8c7cf3ad77a0f0a456ce2c6afe88a.png" loading="lazy"></p>

@@ -3,9 +3,6 @@ title: 好友
 layout: py
 ---
 
-## 镜像站
-- [![镜像站](https://chiyukiruon.top/images/arimakana.JPG)](https://chiyukiruon.top/ "")
-
 ## 友情链接
 - [![Taranagi](https://m.taranagi.cc/upload/0def7ad4ac874e07602b4ff5118cd56c.png)](https://taranagi.cc/ "Taranagi")
 
