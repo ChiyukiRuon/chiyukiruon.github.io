@@ -126,5 +126,6 @@ bangumi_gallery:
     margin: 10      # margin of bangumi item
     page_size: 24     # number of bangumi to display per page
     progress: true      # whether display progress in watching tab with full mode
+    lazyload: true
   title: '追番'      # title of bangumi gallery page
   quote: '你能，和我看一辈子动画吗'      # quote of bangumi gallery page

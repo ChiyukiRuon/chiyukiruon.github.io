@@ -1132,10 +1132,10 @@ asynckit@^0.4.0:
   resolved "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@^1.7.2:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.3.tgz#a1125f2faf702bc8e8f2104ec3a76fab40257d85"
-  integrity sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==
+axios@^1.7.4:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.7.tgz#2f554296f9892a72ac8d8e4c5b79c14a91d0a47f"
+  integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.0"
@@ -1768,12 +1768,12 @@ hexo-admonition@^1.1.2:
   dependencies:
     markdown-it "^9.1.0"
 
-hexo-bangumi-gallery@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/hexo-bangumi-gallery/-/hexo-bangumi-gallery-1.0.1.tgz#0d74d55c0f2f2b33e9a5817e5199938f0645bf78"
-  integrity sha512-HwNO/PqjGu+YYSgQaZKr3a92kQ7crRxwlHO4OMtjzZLS1wkHQlQfKh8rT5x5kIT+JO5PXZPijpQD/0s8j2Qtig==
+hexo-bangumi-gallery@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/hexo-bangumi-gallery/-/hexo-bangumi-gallery-1.1.0.tgz#5c1d1d004e3a94f731871cd87b7a78409d2b0bbe"
+  integrity sha512-DryRpcwpEzg2XmoR7gqzrROcm91u6seHJXZ7pMCW1ExLCJK6hJbc7gIQx1yE6PcdDkIWJ/4OpFpRLcKhF8bDkA==
   dependencies:
-    axios "^1.7.2"
+    axios "^1.7.4"
     ejs "^3.1.10"
     hexo-fs "^4.1.3"
     hexo-i18n "^2.0.0"
